@@ -9,15 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class UpdateEmailStepDefinition {
-    WebDriver driver;
-
-    // Mock database email retrieval
-    private String getEmailFromDatabase() {
-        return "new.email@testpro.io"; // Mocked database value
-    }
 
     @Given("the user is logged into the koel app and is in the profile and preference page")
     public void theUserIsLoggedIntoTheKoelAppAndIsInTheProfileAndPreferencePage() {
+
     }
 
     @When("the user updates the email to {string}")

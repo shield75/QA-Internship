@@ -18,29 +18,9 @@ import java.time.Duration;
 public class LoginStepDefinitions {
     WebDriver driver;
     WebDriverWait wait;
-    LoginPage loginPage;
-    HomePage homePage;
-//    LoginPage loginPage = new LoginPage(driver);
-//    HomePage homePage = new HomePage(driver);
 
-
-    @Before
-    public void openBrowser() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+   LoginPage loginPage = new LoginPage(driver);
+   HomePage homePage = new HomePage(driver);
 
     @And("I open Login Page")
     public void iOpenLoginPage() {
