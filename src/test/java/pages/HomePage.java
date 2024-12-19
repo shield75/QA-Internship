@@ -91,11 +91,12 @@ public class HomePage extends BasePage{
     }
 
     public void checkAvatar() {
-//        WebElement avatarIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar")));
-//        avatarIcon.click();
         Assert.assertTrue(findElement(avatar).isDisplayed(), "Avatar not found");
-        //Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(avatar)).isDisplayed());
 
+    }
+
+    public void clickOnAvatar() {
+        wait.until(ExpectedConditions.elementToBeClickable(avatar)).click();
     }
 
 }
