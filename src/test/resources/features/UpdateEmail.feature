@@ -1,18 +1,17 @@
 Feature: Update Email
 
-#  Background:
-#    Given the user is logged into the koel app using "<emailAddress>" "<password>" and is in the profile and preference page
-
   Scenario Outline: Update email with invalid email address
-    Given the user is logged into the koel app using "<emailAddress>" "<password>" and is in the profile and preference page
+    Given the user is logged into the koel app using and is in the profile and preference page
     When Enter a new email address "<newEmail>" and save
     Then the mail should be validated with "<expectedMessage>"
 
     Examples:
-      | emailAddress | password | newEmail | expectedMessage |
-      | rumenul.rimon@testpro.io | 67390342$a | invalidtestpro.io | Please include an '@' in the email address. 'invalidtestpro.io' is missing an '@'. |
-      | rumenul.rimon@testpro.io | 67390342$a | user@domain | Please include a 'testpro.io' domain in the email address. 'user@domain' is missing a 'domain'. |
-      | rumenul.rimon@testpro.io | 67390342$a | user@domaincom | Please include a 'dot(.)' in the email address. 'user@domaincom' is missing a '.'. |
+       |newEmail | expectedMessage |
+       | invalidtestpro.io | Please include an '@' in the email address. 'invalidtestpro.io' is missing an '@'. |
+       | user@domain | Please include a 'testpro.io' domain in the email address. 'user@domain' is missing a 'domain'. |
+       | user@domain.com | Please include a 'dot(.)' in the email address. 'user@domaincom' is missing a '.'. |
+       | user+@example.com| Please remove the (+) in the email address before '@'.|
+       | jason@testpro.io| this user already exists.|
 
 
 #  Scenario: Enter an invalid email without "@" symbol

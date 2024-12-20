@@ -22,7 +22,7 @@ public class LoginStepDefinitions {
    LoginPage loginPage = new LoginPage(driver);
    HomePage homePage = new HomePage(driver);
 
-    @And("I open Login Page")
+    @When("I open Login Page")
     public void iOpenLoginPage() {
         driver.get("https://qa.koel.app/");
     }

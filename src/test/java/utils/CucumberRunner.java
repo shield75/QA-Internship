@@ -4,30 +4,34 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import pages.HomePage;
+import pages.LoginPage;
 
 @CucumberOptions(
         features = "src/test/resources/features", // Path to feature files
         glue = "stepDefinition", // Package containing step definitions
-        tags = "@Regression or @Smoke", // Execute specific tags
         plugin = {
                 "pretty", // Prints Gherkin steps in the console
-                "html:target/cucumber-reports/cucumber.html" // HTML report
+                "html:src/test/cucumber-reports/cucumber.html" // HTML report
 
-        },
-        monochrome = true, // Makes console output readable
-        dryRun = false // Set to true to check step definitions without executing tests
+        }
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
     @Before
-    public void setUpCucumber() {
+    public void setUpCucumber() throws InterruptedException {
         // Initialize WebDriver or any setup needed before tests
         DriverManager.initializeDriver();
         DriverManager.getDriver().get("https://qa.koel.app/");
         System.out.println("WebDriver initialized");
+
+        LoginPage loginPage = new LoginPage(DriverManager.getDriver());
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+
+        loginPage.provideEmail("rumenul.rimon@testpro.io").providePassword("27041575").clickSubmit();
+        Thread.sleep(5000);
+        homePage.clickOnAvatar();
     }
 
     @DataProvider(parallel = true) // Enable parallel execution of scenarios

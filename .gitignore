@@ -14,3 +14,5 @@ gradle*
 # gradle/wrapper/gradle-wrapper.properties
 
 /out/
+# Ignore Gradle build output directory
+build

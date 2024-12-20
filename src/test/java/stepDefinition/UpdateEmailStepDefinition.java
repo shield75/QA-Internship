@@ -22,17 +22,15 @@ public class UpdateEmailStepDefinition {
         profileAndPreferences = new ProfileAndPreferences(driver);
     }
 
-    @Given("the user is logged into the koel app using {string} {string} and is in the profile and preference page")
-    public void theUserIsLoggedIntoTheKoelAppUsingAndIsInTheProfileAndPreferencePage(String email, String password) throws InterruptedException {
-        loginPage.provideEmail(email).providePassword(password).clickSubmit();
-        Thread.sleep(5000);
-        homePage.clickOnAvatar();
+    @Given("the user is logged into the koel app using and is in the profile and preference page")
+    public void theUserIsLoggedIntoTheKoelAppUsingAndIsInTheProfileAndPreferencePage() {
+
     }
 
     @When("Enter a new email address {string} and save")
-    public void enterANewEmailAddressAndSave(String email) {
-        profileAndPreferences.provideCurrentPassword("67390342$a");
-        profileAndPreferences.provideNewPassword("67390342$a");
+    public void enterANewEmailAddressAndSave(String email) throws InterruptedException {
+        Thread.sleep(5000);
+        profileAndPreferences.provideCurrentPassword("27041575");
         profileAndPreferences.provideNewEmailAddress(email);
         profileAndPreferences.clickOnSaveButton();
     }
